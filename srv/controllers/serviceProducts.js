@@ -40,7 +40,7 @@ exports.massProducts = async (req, res) => {
 }
 
 // Anda perfecto
-exports.getProduct = async (req, res) => {
+exports.getProducts = async (req, res) => {
     const db = await cds.connect.to("db");
 
     const { Products } = await cds.entities("Products")
