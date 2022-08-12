@@ -57,13 +57,13 @@ exports.patchProducts = async (req, res) => {
 
         const product_ID = req.params.ID;
 
-        const dbProducts = await db.run(SELECT.one(Products).where({ ID:product_ID }))
-        
-        // comprobar si el ID del producto existe en la BD para poder editarlo
-        if (dbProducts && dbProducts !== null) {            
-            console.log('valor',req.body);
+        const dbProducts = await db.run(SELECT.one(Products).where({ ID: product_ID }))
 
-            await db.run(UPDATE(Products).set(req.body).where({ID:product_ID}));
+        // comprobar si el ID del producto existe en la BD para poder editarlo
+        if (dbProducts && dbProducts !== null) {
+            console.log('valor', req.body);
+
+            await db.run(UPDATE(Products).set(req.body).where({ ID: product_ID }));
 
             return res.status(200).type("application/json").send({
                 code: 200,
@@ -84,4 +84,38 @@ exports.patchProducts = async (req, res) => {
     }
 
     return res.status(200).type("application/json").send('Prueba')
+}
+
+exports.deleteProducts = async (req, res) => {
+    try {
+        const db = await cds.connect.to("db");
+        const { Products } = await cds.entities('Products')
+
+        const product_ID = req.params.ID;
+
+        const dbProducts = await db.run(SELECT.one(Products).where({ ID: product_ID }))
+
+        // comprobar si el ID del producto existe en la BD para poder editarlo
+        if (dbProducts && dbProducts !== null) {
+            console.log('valor', req.body);
+
+            await db.run(DELETE.from(Products).where({ ID: product_ID }))
+
+            return res.status(200).type("application/json").send({
+                code: 200,
+                message: `El producto ${product_ID} se ha eliminado con éxito`
+            })
+        } else {
+            return res.status(400).type("application/json").send({
+                code: 400,
+                message: `El producto ${product_ID} no existe`
+            })
+        }
+    } catch (error) {
+        console.log("Error", e)
+        return res.status(400).type("application/json").send({
+            code: 400,
+            message: e
+        })
+    }
 }

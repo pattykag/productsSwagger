@@ -1,0 +1,2 @@
+### DELETE REQUEST
+DELETE http://localhost:4004/apiNode/deleteProducts/1244331e-d304-44d7-a3bd-1b388bef6025
