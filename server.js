@@ -13,8 +13,11 @@ const cors = require('cors')
 const debug = cds.debug('openapi')
 let app, docCache = {}
 
+// Habilita o deshabilita partes de la UI
+// .models = schema
+// .topbar = la barra con el ícono de swagger
 let options = {
-    customCss: '.swagger-ui .models { display: none } .swagger-ui .topbar { display: none }'
+    customCss: '.swagger-ui .models { display: true } .swagger-ui .topbar { display: true }'
 };
 
 cds
