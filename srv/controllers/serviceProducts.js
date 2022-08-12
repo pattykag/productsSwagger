@@ -48,3 +48,13 @@ exports.getProducts = async (req, res) => {
 
     return res.status(200).type("application/json").send(aTramitacion)
 }
+
+// No entra
+exports.patchProducts = async (req, res) => {
+    console.log(req.params)
+}
+
+// No entra
+exports.deleteProducts = async (req, res) => {
+    console.log(req.params);
+}

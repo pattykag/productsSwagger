@@ -13,6 +13,7 @@ module.exports = cds.service.impl(async function () {
     const { Products, Suppliers, Categories } = this.entities;
 
     this.before(['CREATE', 'UPDATE'], Products, async (req) => { // validar categoria y supplier
+        console.log('create/update')
         const tx = cds.transaction(req);
 
         // Primero comprobamos que el campo "productName" no esté vacío, exista y no sea igual a null

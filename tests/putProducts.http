@@ -1,0 +1,9 @@
+### PATCH REQUEST
+PUT http://localhost:4004/api/Products(0402371c-d93b-4db2-b542-34eecb403ae2)
+Content-Type: application/json
+
+{
+	"productName": "xxxx",
+    "supplier_ID": 2,
+	"category_ID": 6
+}
