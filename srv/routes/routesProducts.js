@@ -8,4 +8,4 @@ module.exports = router;
 router.post('/massProducts', express.json(), controllerProducts.massProducts);
 router.get('/getProducts', controllerProducts.getProducts);
 router.patch('/patchProducts/:ID', express.json(), controllerProducts.patchProducts);
-router.delete('/deleteProducts/:ID', express.json(), controllerProducts.deleteProducts);
+router.delete('/deleteProducts/:ID', controllerProducts.deleteProducts);

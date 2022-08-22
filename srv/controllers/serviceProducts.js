@@ -97,7 +97,7 @@ exports.deleteProducts = async (req, res) => {
 
         // comprobar si el ID del producto existe en la BD para poder editarlo
         if (dbProducts && dbProducts !== null) {
-            console.log('valor', req.body);
+            console.log('valor', product_ID);
 
             await db.run(DELETE.from(Products).where({ ID: product_ID }))
 
