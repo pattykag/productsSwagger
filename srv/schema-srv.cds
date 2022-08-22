@@ -10,7 +10,7 @@ service ProductsService {
     // @Capabilities : {TopSupported : false} // Disables Top
     // @Capabilities : {SkipSupported : false} // Disables Skip
     @Capabilities : {
-        TopSupported       : false, // Disables Top
+        TopSupported       : true, // Disables Top
         SkipSupported      : false, // Disables Skip
         SortRestrictions   : {Sortable : false}, // Disables Sort
         ExpandRestrictions : {Expandable : false}, // Disables expand

@@ -1,4 +1,4 @@
-const cds = require('@sap/cds')
+const cds = require('@sap/cds');
 
 // http://localhost:4004/apiNode/massProducts
 exports.massProducts = async (req, res) => {
@@ -43,10 +43,10 @@ exports.massProducts = async (req, res) => {
 exports.getProducts = async (req, res) => {
     const db = await cds.connect.to("db");
 
-    const { Products } = await cds.entities("Products")
-    const aTramitacion = await db.run(SELECT.from(Products))
+    const { Products } = await cds.entities("Products");
+    const aProducts = await db.run(SELECT.from(Products));
 
-    return res.status(200).type("application/json").send(aTramitacion)
+    return res.status(200).type("application/json").send(aProducts);
 }
 
 // http://localhost:4004/apiNode/patchProducts/04ca438e-2cc0-48ca-9da8-e7112091425d

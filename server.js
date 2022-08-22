@@ -57,7 +57,7 @@ async function toOpenApiDoc(service, cache) {
 async function openApiFromFile(service) {
     //console.log(service.name)
     //const fileName = resolve(__dirname, `../docs/${service.name}.openapi3.json`) // acá se setea la ruta del archivo moviéndonos entre sus carpetas
-    // Si da error "unable to render" usar la linea 56
+    // Si da error "unable to render" usar la linea 59
     const fileName = resolve(`srv/docs/${service.name}.openapi3.json`)
     const file = await readFile(fileName).catch(() => { /*no such file*/ })
     if (file) {

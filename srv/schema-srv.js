@@ -1,10 +1,10 @@
 const cds = require('@sap/cds');
 const app = cds.app;
-const routesProducts = require('./routes/routesProducts')
+const routesProducts = require('./routes/routesProducts');
 
-//Redirecionamos a la ruta de librerias para crear un nodejs middleware
+//Redirecionamos a la ruta de productos para crear un nodejs middleware
 // NODEjs
-app.use('/apiNode', routesProducts)
+app.use('/apiNode', routesProducts);
 
 // CAP
 
