@@ -1,11 +1,9 @@
 ### POST REQUEST
-POST http://localhost:4004/products/batchProducts
+POST http://localhost:4004/products/Products
 Content-Type: application/json
 
 {
-	"value": [
-        {
-			"productName": "Camisa",
+			"productName": "XXX",
 			"supplier_ID": 2,
 			"category_ID": 6,
 			"quantityPerUnit": "12 por pack",
@@ -14,17 +12,4 @@ Content-Type: application/json
 			"unitsOnOrder": 200,
 			"reorderLevel": 1,
 			"discontinued": false
-		},
-		{
-			"productName": "Falda",
-			"supplier_ID": 2,
-			"category_ID": 6,
-			"quantityPerUnit": "12 por pack",
-			"unitPrice": 999.99,
-			"unitsInStock": 63,
-			"unitsOnOrder": 200,
-			"reorderLevel": 1,
-			"discontinued": true
-		}
-	]
 }

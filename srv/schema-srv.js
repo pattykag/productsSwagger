@@ -14,7 +14,7 @@ module.exports = cds.service.impl(async function () {
 
     this.before(['CREATE', 'UPDATE'], Products, async (req) => { // validar categoria y supplier
         console.log('create/update')
-        const tx = cds.transaction(req);
+        // const tx = cds.transaction(req);
 
         // Primero comprobamos que el campo "productName" no esté vacío, exista y no sea igual a null
         if (req.data.productName && req.data.productName !== null && req.data.productName.trim() !== '') {
@@ -25,7 +25,8 @@ module.exports = cds.service.impl(async function () {
             // Verificar si existe en la BD otro producto con el mismo nombre
             let nameExist;
             try {
-                nameExist = await tx.run(SELECT.one(Products).where({ productName }));
+                // nameExist = await tx.run(SELECT.one(Products).where({ productName }));
+                nameExist = await SELECT.one(Products).where({ productName });
             } catch (error) {
                 req.reject(409, 'Error en la consulta');
             }
@@ -53,7 +54,7 @@ module.exports = cds.service.impl(async function () {
         console.log("Batch Products: ", req.data.value)
 
         try {
-            const tx = await cds.transaction(req);
+            // const tx = await cds.transaction(req);
             const { Products } = this.entities;
 
             const oData = req.data.value;
@@ -62,14 +63,9 @@ module.exports = cds.service.impl(async function () {
                 let iFilasInsertadas = 0;
                 
                 for (let i = 0; i < oData.length; i++) {
-                    iFilasInsertadas += await tx.run(INSERT.into(Products).entries(oData[i]));
+                    // iFilasInsertadas += await tx.run(INSERT.into(Products).entries(oData[i]));
+                    iFilasInsertadas += await INSERT.into(Products).entries(oData[i]);
                 }
-
-                // oData.forEach(async element => {
-                //     //console.log("elemento:", JSON.stringify(element))
-                //     await tx.run(INSERT.into(Products).entries(element));
-                //     iFilasInsertadas = iFilasInsertadas + 1;  //no funciona esta linea
-                // });
                 
                 const oMessage = {
                     code: 201,
