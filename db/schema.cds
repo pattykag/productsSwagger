@@ -1,7 +1,4 @@
-using {
-    cuid,
-    Country
-} from '@sap/cds/common';
+using {cuid} from '@sap/cds/common';
 
 namespace Products;
 

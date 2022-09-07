@@ -47,7 +47,7 @@ async function toOpenApiDoc(service, cache) {
             cache[service.name] = cds.compile.to.openapi(service.model, {
                 service: service.name,
                 'openapi:url': service.path,
-                'openapi:diagram': false
+                'openapi:diagram': true
             })
         }
     }
