@@ -1,636 +1,665 @@
 {
     "openapi": "3.0.2",
     "info": {
-        "title": "Service for namespace ProductsService",
-        "description": "This service is located at [/products/](/)",
-        "version": ""
+      "title": "Service for namespace ProductsService",
+      "description": "This service is located at [/products/](/)",
+      "version": ""
     },
     "servers": [
-        {
-            "url": "/products"
-        }
+      {
+        "url": "/products"
+      }
     ],
     "tags": [
-        {
-            "name": "Products"
-        },
-        {
-            "name": "Suppliers"
-        },
-        {
-            "name": "Categories"
-        }
+      {
+        "name": "Products"
+      },
+      {
+        "name": "Suppliers"
+      },
+      {
+        "name": "Categories"
+      }
     ],
     "paths": {
-        "/Products": {
-            "get": {
-                "summary": "Lista de Productos.",
-                "tags": [
-                    "Products"
-                ],
-                "parameters": [
-                    {
-                        "$ref": "#/components/parameters/top"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Lista de Productos",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Products"
-                                }
-                            }
-                        }
-                    },
-                    "4XX": {
-                        "$ref": "#/components/responses/error"
-                    }
-                }
-            },
-            "post": {
-                "summary": "Crea un Producto.",
-                "tags": [
-                    "Products"
-                ],
-                "requestBody": {
-                    "description": "Ingrese el nuevo Producto",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Products"
-                            },
-                            "example": "{ \"productName\": \"string\", \"supplier_ID\": 0, \"category_ID\": 0, \"quantityPerUnit\": \"string\", \"unitPrice\": 0, \"unitsInStock\": 0, \"unitsOnOrder\": 0, \"reorderLevel\": 0, \"discontinued\": false }"
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Producto Creado",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Products"
-                                }
-                            }
-                        }
-                    },
-                    "4XX": {
-                        "$ref": "#/components/responses/error"
-                    }
-                }
+      "/Products": {
+        "get": {
+          "summary": "Lista de Productos.",
+          "tags": [
+            "Products"
+          ],
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/top"
             }
+          ],
+          "responses": {
+            "200": {
+              "description": "Lista de Productos",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Products"
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
         },
-        "/Products({ID})": {
-            "parameters": [
-                {
-                    "description": "key: ID",
-                    "in": "path",
-                    "name": "ID",
-                    "required": true,
-                    "schema": {
-                        "type": "string"
-                    }
-                }
-            ],
-            "get": {
-                "summary": "Muestra un Producto por su ID.",
-                "tags": [
-                    "Products"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Producto encontrado por ID.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Products"
-                                }
-                            }
-                        }
-                    },
-                    "4XX": {
-                        "$ref": "#/components/responses/error"
-                    }
-                }
-            },
-            "patch": {
-                "summary": "Editar un producto.",
-                "tags": [
-                    "Products"
-                ],
-                "requestBody": {
-                    "description": "Producto a editar:",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Products"
-                            }
-                        }
-                    }
+        "post": {
+          "summary": "Crea un Producto.",
+          "tags": [
+            "Products"
+          ],
+          "requestBody": {
+            "description": "Ingrese el nuevo Producto",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Products"
                 },
-                "responses": {
-                    "200": {
-                        "description": "Producto Editado con éxito."
-                    },
-                    "4XX": {
-                        "$ref": "#/components/responses/error"
-                    }
+                "example": "{ \"productName\": \"string\", \"supplier_ID\": 0, \"category_ID\": 0, \"quantityPerUnit\": \"string\", \"unitPrice\": 0, \"unitsInStock\": 0, \"unitsOnOrder\": 0, \"reorderLevel\": 0, \"discontinued\": false }"
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Producto Creado",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Products"
+                  }
                 }
+              }
             },
-            "delete": {
-                "summary": "Borra un Producto.",
-                "tags": [
-                    "Products"
-                ],
-                "responses": {
-                    "204": {
-                        "description": "Producto eliminado con éxito."
-                    },
-                    "4XX": {
-                        "$ref": "#/components/responses/error"
-                    }
-                }
+            "4XX": {
+              "$ref": "#/components/responses/error"
             }
-        },
-        "/Suppliers": {
-            "get": {
-                "summary": "Lista de Productos.",
-                "tags": [
-                    "Suppliers"
-                ],
-                "parameters": [
-                    {
-                        "$ref": "#/components/parameters/top"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Lista de Suppliers",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Suppliers"
-                                }
-                            }
-                        }
-                    },
-                    "4XX": {
-                        "$ref": "#/components/responses/error"
-                    }
-                }
-            },
-            "post": {
-                "summary": "Crea un Supplier.",
-                "tags": [
-                    "Suppliers"
-                ],
-                "requestBody": {
-                    "description": "Ingrese el nuevo Supplier",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Suppliers"
-                            },
-                            "example": "{{ \"ID\": 0, \"companyName\": \"string\", \"contactName\": \"string\", \"contactTitle\": \"string\", \"address\": \"string\", \"city\": \"string\", \"region\": \"string\", \"postalCode\": \"string\", \"country\": \"str\", \"phone\": \"string\", \"fax\": \"string\", \"homePage\": \"string\", \"product\": [ { \"productName\": \"string\", \"supplier\": [ \"string\" ], \"category\": [ { \"ID\": 0, \"categoryName\": \"string\", \"description\": \"string\", \"product\": [ \"string\" ] } ], \"quantityPerUnit\": \"string\", \"unitPrice\": \"00.00\", \"unitsInStock\": 0, \"unitsOnOrder\": 0, \"reorderLevel\": 0, \"discontinued\": true } ] }}"
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Supplier Creado",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Suppliers"
-                                }
-                            }
-                        }
-                    },
-                    "4XX": {
-                        "$ref": "#/components/responses/error"
-                    }
-                }
-            }
-        },
-        "/Suppliers({ID})": {
-            "parameters": [
-                {
-                    "description": "key: ID",
-                    "in": "path",
-                    "name": "ID",
-                    "required": true,
-                    "schema": {
-                        "type": "integer",
-                        "format": "int32"
-                    }
-                }
-            ],
-            "get": {
-                "summary": "Retrieve a single supplier.",
-                "tags": [
-                    "Suppliers"
-                ],
-                "parameters": [
-                    {
-                        "name": "$select",
-                        "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
-                        "in": "query",
-                        "explode": false,
-                        "schema": {
-                            "type": "array",
-                            "uniqueItems": true,
-                            "items": {
-                                "type": "string",
-                                "enum": [
-                                    "ID",
-                                    "companyName",
-                                    "contactName",
-                                    "contactTitle",
-                                    "address",
-                                    "city",
-                                    "region",
-                                    "postalCode",
-                                    "country",
-                                    "phone",
-                                    "fax",
-                                    "homePage"
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "name": "$expand",
-                        "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
-                        "in": "query",
-                        "explode": false,
-                        "schema": {
-                            "type": "array",
-                            "uniqueItems": true,
-                            "items": {
-                                "type": "string",
-                                "enum": [
-                                    "*",
-                                    "product"
-                                ]
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Retrieved supplier",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Suppliers"
-                                }
-                            }
-                        }
-                    },
-                    "4XX": {
-                        "$ref": "#/components/responses/error"
-                    }
-                }
-            },
-            "patch": {
-                "summary": "Change a single supplier.",
-                "tags": [
-                    "Suppliers"
-                ],
-                "requestBody": {
-                    "description": "New property values",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Suppliers"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "204": {
-                        "description": "Success"
-                    },
-                    "4XX": {
-                        "$ref": "#/components/responses/error"
-                    }
-                }
-            },
-            "delete": {
-                "summary": "Delete a single supplier.",
-                "tags": [
-                    "Suppliers"
-                ],
-                "responses": {
-                    "204": {
-                        "description": "Success"
-                    },
-                    "4XX": {
-                        "$ref": "#/components/responses/error"
-                    }
-                }
-            }
-        },
-        "/Suppliers({ID})/product": {
-            "parameters": [
-                {
-                    "description": "key: ID",
-                    "in": "path",
-                    "name": "ID",
-                    "required": true,
-                    "schema": {
-                        "type": "integer",
-                        "format": "int32"
-                    }
-                }
-            ],
-            "get": {
-                "summary": "Retrieve a list of product of a supplier.",
-                "tags": [
-                    "Suppliers",
-                    "Products"
-                ],
-                "parameters": [],
-                "responses": {
-                    "200": {
-                        "description": "Retrieved supplier",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Products"
-                                }
-                            }
-                        }
-                    },
-                    "4XX": {
-                        "$ref": "#/components/responses/error"
-                    }
-                }
-            }
-        },
-        "/batchProducts": {
-            "post": {
-                "summary": "Invoke action batchProducts",
-                "tags": [
-                    "Service Operations"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Products"
-                                }
-                            }
-                        }
-                    },
-                    "4XX": {
-                        "$ref": "#/components/responses/error"
-                    }
-                },
-                "requestBody": {
-                    "description": "Action parameters",
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "value": {
-                                        "type": "array",
-                                        "items": {
-                                            "$ref": "#/components/schemas/Products"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+          }
         }
+      },
+      "/Products({ID})": {
+        "parameters": [
+          {
+            "description": "key: ID",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "get": {
+          "summary": "Muestra un Producto por su ID.",
+          "tags": [
+            "Products"
+          ],
+          "responses": {
+            "200": {
+              "description": "Producto encontrado por ID.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Products"
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        },
+        "patch": {
+          "summary": "Editar un producto.",
+          "tags": [
+            "Products"
+          ],
+          "requestBody": {
+            "description": "Producto a editar:",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Products"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Producto Editado con éxito."
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Borra un Producto.",
+          "tags": [
+            "Products"
+          ],
+          "responses": {
+            "204": {
+              "description": "Producto eliminado con éxito."
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        }
+      },
+      "/Suppliers": {
+        "get": {
+          "summary": "Lista de Productos.",
+          "tags": [
+            "Suppliers"
+          ],
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/top"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Lista de Suppliers",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Suppliers"
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        },
+        "post": {
+          "summary": "Crea un Supplier.",
+          "tags": [
+            "Suppliers"
+          ],
+          "requestBody": {
+            "description": "Ingrese el nuevo Supplier",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Suppliers"
+                },
+                "example": "{ \"ID\": 0, \"companyName\": \"string\", \"contactName\": \"string\", \"contactTitle\": \"string\", \"address\": \"string\", \"city\": \"string\", \"region\": \"string\", \"postalCode\": \"string\", \"country\": \"str\", \"phone\": \"string\", \"fax\": \"string\", \"homePage\": \"string\" }"
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Supplier Creado",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Suppliers"
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        }
+      },
+      "/Suppliers({ID})": {
+        "parameters": [
+          {
+            "description": "key: ID",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "get": {
+          "summary": "Retrieve a single supplier.",
+          "tags": [
+            "Suppliers"
+          ],
+          "parameters": [
+            {
+              "name": "$select",
+              "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "ID",
+                    "companyName",
+                    "contactName",
+                    "contactTitle",
+                    "address",
+                    "city",
+                    "region",
+                    "postalCode",
+                    "country",
+                    "phone",
+                    "fax",
+                    "homePage"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "$expand",
+              "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "*",
+                    "product"
+                  ]
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Retrieved supplier",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Suppliers"
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        },
+        "patch": {
+          "summary": "Change a single supplier.",
+          "tags": [
+            "Suppliers"
+          ],
+          "requestBody": {
+            "description": "New property values",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Suppliers"
+                },
+                "example": "{ \"ID\": 0, \"companyName\": \"string\", \"contactName\": \"string\", \"contactTitle\": \"string\", \"address\": \"string\", \"city\": \"string\", \"region\": \"string\", \"postalCode\": \"string\", \"country\": \"str\", \"phone\": \"string\", \"fax\": \"string\", \"homePage\": \"string\" }"
+              }
+            }
+          },
+          "responses": {
+            "204": {
+              "description": "Success"
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a single supplier.",
+          "tags": [
+            "Suppliers"
+          ],
+          "responses": {
+            "204": {
+              "description": "Success"
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        }
+      },
+      "/Suppliers({ID})/product": {
+        "parameters": [
+          {
+            "description": "key: ID",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "get": {
+          "summary": "Retrieve a list of product of a supplier.",
+          "tags": [
+            "Suppliers",
+            "Products"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Retrieved supplier",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Products"
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        }
+      },
+      "/Categories": {
+        "get": {
+          "summary": "Retrieve a list of categories.",
+          "tags": [
+            "Categories"
+          ],
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/top"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Lista de Productos",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Categories"
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        }
+      },
+      "/batchProducts": {
+        "post": {
+          "summary": "Invoke action batchProducts",
+          "tags": [
+            "Service Operations"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Products"
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          },
+          "requestBody": {
+            "description": "Action parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Products"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "components": {
-        "schemas": {
-            "Products": {
-                "title": "Products",
-                "type": "object",
-                "properties": {
-                    "ID": {
-                        "type": "string",
-                        "format": "uuid",
-                        "readOnly": true
-                    },
-                    "productName": {
-                        "type": "string"
-                    },
-                    "supplier": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Suppliers"
-                        }
-                    },
-                    "category": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Categories"
-                        }
-                    },
-                    "quantityPerUnit": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "unitPrice": {
-                        "type": "number",
-                        "format": "decimal",
-                        "example": "00.00",
-                        "multipleOf": 0.01,
-                        "maximum": 99999999.99,
-                        "minimum": -99999999.99
-                    },
-                    "unitsInStock": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "unitsOnOrder": {
-                        "type": "integer",
-                        "format": "int32",
-                        "nullable": true
-                    },
-                    "reorderLevel": {
-                        "type": "integer",
-                        "format": "int32",
-                        "nullable": true
-                    },
-                    "discontinued": {
-                        "type": "boolean",
-                        "nullable": true
-                    }
-                }
+      "schemas": {
+        "Products": {
+          "title": "Products",
+          "type": "object",
+          "properties": {
+            "ID": {
+              "type": "string",
+              "format": "uuid",
+              "readOnly": true
             },
-            "Suppliers": {
-                "title": "Suppliers",
-                "type": "object",
-                "properties": {
-                    "ID": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "companyName": {
-                        "type": "string"
-                    },
-                    "contactName": {
-                        "type": "string"
-                    },
-                    "contactTitle": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "address": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "city": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "region": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "postalCode": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "country": {
-                        "type": "string",
-                        "maxLength": 3,
-                        "nullable": true
-                    },
-                    "phone": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "fax": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "homePage": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "product": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Products"
-                        }
-                    }
-                }
+            "productName": {
+              "type": "string"
             },
-            "Categories": {
-                "title": "Categories",
-                "type": "object",
-                "properties": {
-                    "ID": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "categoryName": {
-                        "type": "string"
-                    },
-                    "description": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "product": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Products"
-                        }
-                    }
-                }
+            "supplier": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Suppliers"
+              }
             },
-            "error": {
-                "type": "object",
-                "required": [
-                    "error"
-                ],
-                "properties": {
-                    "error": {
-                        "type": "object",
-                        "required": [
-                            "code",
-                            "message"
-                        ],
-                        "properties": {
-                            "code": {
-                                "type": "string"
-                            },
-                            "message": {
-                                "type": "string"
-                            },
-                            "target": {
-                                "type": "string"
-                            },
-                            "details": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "required": [
-                                        "code",
-                                        "message"
-                                    ],
-                                    "properties": {
-                                        "code": {
-                                            "type": "string"
-                                        },
-                                        "message": {
-                                            "type": "string"
-                                        },
-                                        "target": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            },
-                            "innererror": {
-                                "type": "object",
-                                "description": "The structure of this object is service-specific"
-                            }
-                        }
-                    }
-                }
+            "category": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Categories"
+              }
+            },
+            "quantityPerUnit": {
+              "type": "string",
+              "nullable": true
+            },
+            "unitPrice": {
+              "type": "number",
+              "format": "decimal",
+              "example": "00.00",
+              "multipleOf": 0.01,
+              "maximum": 99999999.99,
+              "minimum": -99999999.99
+            },
+            "unitsInStock": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "unitsOnOrder": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "reorderLevel": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "discontinued": {
+              "type": "boolean",
+              "nullable": true
             }
+          }
         },
-        "parameters": {
-            "top": {
-                "name": "$top",
-                "in": "query",
-                "description": "Sólo muestra n ítemes de la lista",
-                "schema": {
-                    "type": "integer",
-                    "minimum": 0
+        "Suppliers": {
+          "title": "Suppliers",
+          "type": "object",
+          "properties": {
+            "ID": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "companyName": {
+              "type": "string"
+            },
+            "contactName": {
+              "type": "string"
+            },
+            "contactTitle": {
+              "type": "string",
+              "nullable": true
+            },
+            "address": {
+              "type": "string",
+              "nullable": true
+            },
+            "city": {
+              "type": "string",
+              "nullable": true
+            },
+            "region": {
+              "type": "string",
+              "nullable": true
+            },
+            "postalCode": {
+              "type": "string",
+              "nullable": true
+            },
+            "country": {
+              "type": "string",
+              "maxLength": 3,
+              "nullable": true
+            },
+            "phone": {
+              "type": "string",
+              "nullable": true
+            },
+            "fax": {
+              "type": "string",
+              "nullable": true
+            },
+            "homePage": {
+              "type": "string",
+              "nullable": true
+            },
+            "product": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Products"
+              }
+            }
+          }
+        },
+        "Categories": {
+          "title": "Categories",
+          "type": "object",
+          "properties": {
+            "ID": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "categoryName": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "product": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Products"
+              }
+            }
+          }
+        },
+        "error": {
+          "type": "object",
+          "required": [
+            "error"
+          ],
+          "properties": {
+            "error": {
+              "type": "object",
+              "required": [
+                "code",
+                "message"
+              ],
+              "properties": {
+                "code": {
+                  "type": "string"
                 },
-                "example": 10
-            }
-        },
-        "responses": {
-            "error": {
-                "description": "Error",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/error"
-                        }
+                "message": {
+                  "type": "string"
+                },
+                "target": {
+                  "type": "string"
+                },
+                "details": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "code",
+                      "message"
+                    ],
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "target": {
+                        "type": "string"
+                      }
                     }
+                  }
+                },
+                "innererror": {
+                  "type": "object",
+                  "description": "The structure of this object is service-specific"
                 }
+              }
             }
+          }
         }
+      },
+      "parameters": {
+        "top": {
+          "name": "$top",
+          "in": "query",
+          "description": "Sólo muestra n ítemes de la lista",
+          "schema": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "example": 10
+        }
+      },
+      "responses": {
+        "error": {
+          "description": "Error",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/error"
+              }
+            }
+          }
+        }
+      }
     }
-}
+  }

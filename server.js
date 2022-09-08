@@ -15,7 +15,7 @@ let app, docCache = {}
 
 // Habilita o deshabilita partes de la UI
 // .models = schema
-// .topbar = la barra con el ícono de swagger
+// .topbar = la barra con el ícono de swagger (display: none)
 let options = {
     customCss: '.swagger-ui .models { display: true } .swagger-ui .topbar { display: true }'
 };
@@ -47,7 +47,7 @@ async function toOpenApiDoc(service, cache) {
             cache[service.name] = cds.compile.to.openapi(service.model, {
                 service: service.name,
                 'openapi:url': service.path,
-                'openapi:diagram': true
+                'openapi:diagram': false
             })
         }
     }
