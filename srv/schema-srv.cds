@@ -31,7 +31,7 @@ service ProductsService {
         },
         InsertRestrictions : {Description : 'Ingresar un Producto por su ID'},
         DeleteRestrictions : {Description : 'Eliminar un Producto por su ID'},
-
+        DeepInsertSupport  : {Supported : false}
     }
     entity Products   as projection on my.Products;
 
