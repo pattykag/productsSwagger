@@ -1,5 +1,28 @@
 {
-  "scopes": [],
-  "attributes": [],
-  "role-templates": []
+    "xsappname": "productsSwagger",
+    "tenant-mode": "dedicated",
+    "description": "Security profile of called application",
+    "scopes": [
+        {
+            "name": "$XSAPPNAME.ProductsViewer",
+            "description": "ProductsViewer"
+        }
+    ],
+    "attributes": [],
+    "role-templates": [
+        {
+            "name": "ProductsViewer",
+            "description": "generated",
+            "scope-references": [
+                "$XSAPPNAME.ProductsViewer"
+            ],
+            "attribute-references": []
+        }
+    ],
+    "oauth2-configuration": {
+        "redirect-uris": [
+            "https://*.cfapps.*.hana.ondemand.com/**"
+        ]
+    },
+    "authorities-inheritance": false
 }
