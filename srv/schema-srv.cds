@@ -5,6 +5,7 @@ using {Products as my} from '../db/schema';
     LongDescription : 'Este servicio está localizado en [/products/](/)'
 }
 @Capabilities : {BatchSupport : {Supported : false}}
+@requires: 'authenticated-user' 
 service ProductsService {
     // @Core         : {Description : '->Productos'}
     // @Capabilities : {TopSupported : false} // Disables Top
@@ -34,8 +35,6 @@ service ProductsService {
         DeepInsertSupport  : {Supported : false}
     }
     entity Products   as projection on my.Products;
-
-    entity Suppliers  as projection on my.Suppliers;
 
     //@Permissions: {Write: true}
     @readonly
