@@ -1,8 +1,0 @@
-### PATCH REQUEST
-PATCH http://localhost:4004/apiNode/patchProducts/1b66fbfd-eafa-426d-a615-4ab397653c03
-Content-Type: application/json
-
-{
-    "productName": "Sombrero",
-    "quantityPerUnit": "56 paquetes"
-}

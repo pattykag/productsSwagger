@@ -5,7 +5,7 @@ using {Products as my} from '../db/schema';
     LongDescription : 'Este servicio está localizado en [/products/](/)'
 }
 @Capabilities : {BatchSupport : {Supported : false}}
-@requires: 'authenticated-user' 
+//@requires: 'authenticated-user' 
 service ProductsService {
     // @Core         : {Description : '->Productos'}
     // @Capabilities : {TopSupported : false} // Disables Top
@@ -39,6 +39,8 @@ service ProductsService {
     //@Permissions: {Write: true}
     @readonly
     entity Categories as projection on my.Categories;
+
+    entity Suppliers as projection on my.Suppliers;
 
     action batchProducts(value : array of Products) returns oMessage;
 
