@@ -1,4 +1,5 @@
 const cds = require('@sap/cds');
+const log = require('cf-nodejs-logging-support');
 const app = cds.app;
 const routesProducts = require('./routes/routesProducts');
 
@@ -7,6 +8,8 @@ const routesProducts = require('./routes/routesProducts');
 app.use('/apiNode', routesProducts);
 
 // CAP
+// Set the minimum logging level (Levels: off, error, warn, info, verbose, debug, silly)
+log.setLoggingLevel("warn");
 
 module.exports = cds.service.impl(async function () {
     //module.exports = cds.service.impl(async(srv) => {
@@ -15,6 +18,7 @@ module.exports = cds.service.impl(async function () {
     this.before(['CREATE', 'UPDATE'], Products, async (req) => { // validar categoria y supplier
         console.log('create/update')
         // const tx = cds.transaction(req);
+        console.log('esto',req.locale)
 
         // Primero comprobamos que el campo "productName" no esté vacío, exista y no sea igual a null
         if (req.data.productName && req.data.productName !== null && req.data.productName.trim() !== '') {

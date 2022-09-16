@@ -26,6 +26,7 @@ modules:
     requires:
       - name: productsSwagger-auth
       - name: productsSwagger-db
+      - name: productSwaggerSRV-applicationLogs
 
   - name: productsSwagger
     type: approuter.nodejs
@@ -50,6 +51,7 @@ modules:
       buildpack: nodejs_buildpack
     requires:
       - name: productsSwagger-db
+      - name: productSwaggerSRV-applicationLogs
 
 resources:
   - name: productsSwagger-auth
@@ -66,3 +68,9 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
+  - name: productSwaggerSRV-applicationLogs
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: application-logs
+      service-plan: lite
+
