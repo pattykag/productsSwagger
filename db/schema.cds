@@ -1,8 +1,8 @@
-using {cuid} from '@sap/cds/common';
+using {cuid, managed} from '@sap/cds/common';
 
 namespace Products;
 
-entity Products : cuid { //una sola categoria
+entity Products : cuid, managed { //una sola categoria
     @mandatory productName  : String;
     @mandatory supplier     : Association to Suppliers;
     @mandatory category     : Association to Categories;

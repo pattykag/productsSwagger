@@ -1,7 +1,7 @@
 const cds = require('@sap/cds');
-const log = require('cf-nodejs-logging-support');
-const app = cds.app;
-const routesProducts = require('./routes/routesProducts');
+const log = require('cf-nodejs-logging-support'); // logs
+const app = cds.app; // middleware
+const routesProducts = require('./routes/routesProducts'); // middleware
 
 //Redirecionamos a la ruta de productos para crear un nodejs middleware
 // NODEjs
@@ -9,15 +9,19 @@ app.use('/apiNode', routesProducts);
 
 // CAP
 // Set the minimum logging level (Levels: off, error, warn, info, verbose, debug, silly)
-log.setLoggingLevel("warn");
-cds.env.log.user = true;
+log.setLoggingLevel("warn"); // logs
 
 module.exports = cds.service.impl(async function () {
     //module.exports = cds.service.impl(async(srv) => {
     const { Products, Suppliers, Categories } = this.entities;
 
+    this.before('READ', Products, async (req) => {
+        console.log(`Usuario ----> ${req.user.id}`);
+    });
+
     this.before(['CREATE', 'UPDATE'], Products, async (req) => { // validar categoria y supplier
-        console.log('create/update')
+        console.log('create/update');
+        console.log(`Usuario ----> ${req.user}`);
         // const tx = cds.transaction(req);
 
         // Primero comprobamos que el campo "productName" no esté vacío, exista y no sea igual a null
@@ -40,7 +44,6 @@ module.exports = cds.service.impl(async function () {
 
                 if (ID === undefined || nameExist.ID !== ID || ID === null) { // Verificar si el URL tiene el mismo ID y nombre que alguno almacenado
                     // 'POST'
-                    //console.log(`Usuario ----> ${req.user}`);
                     log.warn('Prueba de Warn');
                     log.error(`Ya existe un producto con ese nombre`);
                     console.log('console.log ---> Ya existe un producto con ese nombre');
@@ -68,12 +71,12 @@ module.exports = cds.service.impl(async function () {
 
             if (oData && oData !== null && oData.length > 0) {
                 let iFilasInsertadas = 0;
-                
+
                 for (let i = 0; i < oData.length; i++) {
                     // iFilasInsertadas += await tx.run(INSERT.into(Products).entries(oData[i]));
                     iFilasInsertadas += await INSERT.into(Products).entries(oData[i]);
                 }
-                
+
                 const oMessage = {
                     code: 201,
                     message: "Número de Productos ingresados " + iFilasInsertadas
