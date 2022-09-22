@@ -21,7 +21,7 @@ module.exports = cds.service.impl(async function () {
 
     this.before(['CREATE', 'UPDATE'], Products, async (req) => { // validar categoria y supplier
         console.log('create/update');
-        console.log(`Usuario ----> ${req.user}`);
+        console.log(`Usuario ----> ${req.user.id}`);
         // const tx = cds.transaction(req);
 
         // Primero comprobamos que el campo "productName" no esté vacío, exista y no sea igual a null
