@@ -3,9 +3,11 @@ const log = require('cf-nodejs-logging-support'); // logs
 const app = cds.app; // middleware
 const routesProducts = require('./routes/routesProducts'); // middleware
 
-//Redirecionamos a la ruta de productos para crear un nodejs middleware
+// Redirecionamos a la ruta de productos para crear un nodejs middleware
 // NODEjs
 app.use('/apiNode', routesProducts);
+
+cds.env.features.fetch_csrf = true // x-csrf-token
 
 // CAP
 // Set the minimum logging level (Levels: off, error, warn, info, verbose, debug, silly)
@@ -16,12 +18,12 @@ module.exports = cds.service.impl(async function () {
     const { Products, Suppliers, Categories } = this.entities;
 
     this.before('READ', Products, async (req) => {
-        console.log(`Usuario ----> ${req.user.id}`);
+        console.log(`Usuario ----> ${req.user.id}`); // Muestra Usuario en los logs
     });
 
     this.before(['CREATE', 'UPDATE'], Products, async (req) => { // validar categoria y supplier
         console.log('create/update');
-        console.log(`Usuario ----> ${req.user.id}`);
+        console.log(`Usuario ----> ${req.user.id}`); // Muestra Usuario en los logs
         // const tx = cds.transaction(req);
 
         // Primero comprobamos que el campo "productName" no esté vacío, exista y no sea igual a null
@@ -61,7 +63,7 @@ module.exports = cds.service.impl(async function () {
     });
 
     this.on('batchProducts', async (req) => {
-        console.log("Batch Products: ", req.data.value)
+        console.log("Batch Products: ", req.data.value);
 
         try {
             // const tx = await cds.transaction(req);
@@ -89,6 +91,7 @@ module.exports = cds.service.impl(async function () {
             console.log("Error", e)
             req.reject(400, e)
         }
-    })
+    });
+});
 
-})
+cds.env.features.fetch_csrf = false;

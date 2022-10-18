@@ -22,7 +22,9 @@
     "sqlite3": "^5.0.4"
   },
   "scripts": {
-    "start": "cds run"
+    "start": "cds run",
+    "deploy": "mbt build && cf deploy mta_archives/productsSwagger_1.0.0.mtar",
+    "undeploy": "cf undeploy productsSwagger --delete-services --delete-service-keys -f"
   },
   "engines": {
     "node": "^16.15"
